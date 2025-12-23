@@ -29,29 +29,24 @@
       <!-- Pending Tasks -->
       <div class="bg-white rounded shadow-sm mt-3 p-2"
            style="height: 420px; overflow-y: auto;">
-
+ {% for task in tasks %}
         <div class="card mb-2 shadow-sm">
           <div class="card-body d-flex justify-content-between align-items-center">
-
-            <span>This is some Task</span>
-
+            <span> {{task}} </span>
             <div class="d-flex gap-2">
               <button type="button" class="btn btn-success btn-sm">
                 <i class="fa fa-check"></i> Mark as Done
               </button>
-
               <button type="button" class="btn btn-danger btn-sm">
                 <i class="fa fa-trash"></i>
               </button>
-
               <button type="button" class="btn btn-primary btn-sm">
                 <i class="fa fa-pencil"></i>
               </button>
             </div>
-
-          </div>
+          </div> 
         </div>
-
+        {% endfor %}
       </div>
     </div>
 
@@ -76,7 +71,7 @@
 <!-- BOTTOM ADD TASK BAR -->
 <div class="position-fixed bottom-0 start-0 w-100 bg-secondary-subtle p-3">
   <div class="container">
-    <form method="POST">
+    <form method="POST" action="{% url 'addTask' %}">
       {% csrf_token %}
       <div class="d-flex gap-3">
         <input type="text"
